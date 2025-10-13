@@ -7,17 +7,17 @@ const ContactSummary = () => {
   const containerRef = useRef(null);
   const items = [
     "Innovation",
-    "Precision",
-    "Trust",
+    "Quality",
+    "Performance",
     "Collaboration",
-    "Excellence",
+    "Growth",
   ];
   const items2 = [
-    "contact us",
-    "contact us",
-    "contact us",
-    "contact us",
-    "contact us",
+    "let's create",
+    "let's create",
+    "let's create",
+    "let's create",
+    "let's create",
   ];
 
   useGSAP(() => {
@@ -41,10 +41,10 @@ const ContactSummary = () => {
       <Marquee items={items} />
       <div className="overflow-hidden font-light text-center contact-text-responsive">
         <p>
-          “ Let’s build a <br />
-          <span className="font-normal">memorable</span> &{" "}
-          <span className="italic">inspiring</span> <br />
-          web application <span className="text-gold">together</span> “
+          " Let's build something <br />
+          <span className="font-normal">innovative</span> &{" "}
+          <span className="italic">impactful</span> <br />
+          together "
         </p>
       </div>
       <Marquee

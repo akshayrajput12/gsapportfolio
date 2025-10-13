@@ -1,78 +1,78 @@
 // index.js
 export const servicesData = [
   {
+    title: "Frontend Development",
+    description:
+      "Creating engaging, responsive user interfaces with modern JavaScript frameworks. I specialize in React.js, Next.js, and animation libraries like Framer Motion and GSAP to build visually stunning and highly interactive web applications.",
+    items: [
+      {
+        title: "React.js & Next.js",
+        description: "(Component-based architecture, hooks, state management, SSR)",
+      },
+      {
+        title: "Animation & Interactive UI",
+        description: "(Framer Motion, GSAP, Tailwind CSS, responsive design)",
+      },
+      {
+        title: "JavaScript & TypeScript",
+        description: "(ES6+, TypeScript, modern JS features, best practices)",
+      },
+    ],
+  },
+  {
     title: "Full Stack Web Development",
     description:
-      "Transform your business ideas into powerful web applications. I create custom full-stack solutions using React, Node.js, and modern frameworks with clean architecture, optimized performance, and seamless user experiences that drive engagement and conversions.",
+      "Building complete web applications from frontend to backend. I create custom full-stack solutions using React, Node.js, and modern frameworks with clean architecture, optimized performance, and seamless user experiences.",
     items: [
       {
         title: "Backend API Development",
-        description: "(Node.js, Express, REST/GraphQL APIs, Microservices Architecture)",
+        description: "(Node.js, Express, REST APIs, Supabase, Firebase)",
       },
       {
         title: "Frontend Development",
-        description: "(React.js, Vue.js, TypeScript, Responsive Design, PWAs)",
+        description: "(React.js, Next.js, TypeScript, Responsive Design)",
       },
       {
-        title: "Database Architecture",
-        description: "(MongoDB, PostgreSQL, Redis, Database Optimization)",
-      },
-    ],
-  },
-  {
-    title: "DevOps & Cloud Infrastructure",
-    description:
-      "Scale your applications with confidence using modern DevOps practices and cloud infrastructure. I implement automated CI/CD pipelines, containerization with Docker, and cloud deployment on AWS/Azure to ensure your applications are reliable, scalable, and secure.",
-    items: [
-      {
-        title: "CI/CD Pipeline Setup",
-        description: "(GitHub Actions, Jenkins, Docker, Automated Testing)",
-      },
-      {
-        title: "Cloud Infrastructure",
-        description: "(AWS, Azure, Kubernetes, Serverless Architecture)",
-      },
-      {
-        title: "Performance Optimization",
-        description: "(CDN Setup, Caching Strategies, Load Balancing)",
+        title: "Database Management",
+        description: "(MongoDB, Supabase, Firebase, Database Design)",
       },
     ],
   },
   {
-    title: "Security & Performance Optimization",
+    title: "E-Commerce Solutions",
     description:
-      "Protect your applications and users with enterprise-grade security measures and performance optimization. I implement comprehensive security protocols, conduct code audits, and optimize application performance to ensure fast, secure, and SEO-friendly web applications.",
+      "Developing robust e-commerce platforms with secure payment integration. I build user-friendly shopping interfaces and comprehensive admin panels for inventory and order management, ensuring seamless and trusted user experiences.",
     items: [
       {
-        title: "Security Implementation",
-        description: "(OAuth, JWT, XSS/CSRF Protection, Data Encryption)",
+        title: "E-Commerce Platforms",
+        description: "(Shopping interfaces, product catalogs, user accounts)",
       },
       {
-        title: "Performance Auditing",
-        description: "(Code Reviews, Performance Testing, Optimization)",
+        title: "Payment Integration",
+        description: "(Razorpay, secure payment processing, checkout flows)",
       },
       {
-        title: "SEO Optimization",
-        description: "(Server-Side Rendering, Meta Tags, Structured Data)",
+        title: "Admin Dashboards",
+        description: "(Inventory management, order tracking, analytics)",
       },
     ],
   },
   {
-    title: "Mobile & E-Commerce Solutions",
+    title: "AI-Enhanced Development",
     description:
-      "Expand your reach with cross-platform mobile applications and robust e-commerce solutions. I develop responsive web apps, Progressive Web Apps (PWAs), and mobile applications using React Native, plus complete e-commerce platforms with secure payment integration.",
+      "Leveraging AI tools to enhance development efficiency and product quality. I integrate AI solutions to optimize workflows, automate tasks, and improve the overall development process for faster, higher-quality results.",
     items: [
       {
-        title: "Mobile App Development",
-        description: "(React Native, Flutter, Cross-Platform Solutions)",
+        title: "AI Tool Integration",
+        description: "(Development efficiency, code optimization, automation)",
       },
       {
-        title: "Progressive Web Apps",
-        description: "(Offline Functionality, Push Notifications, App-like Experience)",
+        title: "Quality Enhancement",
+        description: "(Code review assistance, testing, performance optimization)",
       },
       {
-        title: "E-Commerce Development",
-        description: "(Stripe/PayPal Integration, Shopping Carts, Inventory Management)",
+        title: "Continuous Learning",
+        description: "(Adapting to cutting-edge technologies, skill development)",
       },
     ],
   },
@@ -80,97 +80,126 @@ export const servicesData = [
 export const projects = [
   {
     id: 1,
-    name: "Mobile Accessories E-commerce Platform",
+    name: "Orchi Animated Website",
     description:
-      "Full-stack e-commerce solution for mobile accessories featuring secure payment processing, inventory management, and responsive design. Built with React and Node.js, includes shopping cart functionality, user authentication, and admin dashboard for order management.",
-    href: "",
-    image: "/assets/projects/mobile-accessories-store.jpg",
+      "Developed a highly animated, visually engaging website using modern animation frameworks such as Framer Motion and GSAP, enhancing user interaction and retention.",
+    href: "https://github.com/akshayrajput12/Ochi-Locomotive-react-based-project-",
+    image: "/assets/projects/orchi.png",
     bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
       { id: 1, name: "React" },
-      { id: 2, name: "Next.js" },
-      { id: 3, name: "Node.js" },
-      { id: 4, name: "MongoDB" },
-      { id: 5, name: "Tailwind CSS" },
+      { id: 2, name: "GSAP" },
+      { id: 3, name: "Framer Motion" },
+      { id: 4, name: "Tailwind CSS" },
     ],
   },
   {
     id: 2,
-    name: "Plant Shop E-commerce Website",
+    name: "CrazySnitch E-Commerce Platform",
     description:
-      "Modern e-commerce platform for plant enthusiasts featuring product catalog, search functionality, and Stripe payment integration. Includes plant care guides, wishlist functionality, and responsive design optimized for mobile shopping experience.",
-    href: "",
-    image: "/assets/projects/plant-shop.jpg",
+      "Built an e-commerce platform for a clothing brand, featuring a user-friendly shopping interface and a comprehensive admin panel for inventory and order management. Integrated Razorpay for secure payment processing.",
+    href: "https://github.com/akshayrajput12/crazysnitch-fashion-hub",
+    image: "/assets/projects/crazysnitch.png",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
-      { id: 1, name: "React" },
+      { id: 1, name: "Typescript" },
       { id: 2, name: "Next.js" },
-      { id: 3, name: "Stripe API" },
+      { id: 3, name: "Razorpay" },
       { id: 4, name: "Tailwind CSS" },
     ],
   },
   {
     id: 3,
-    name: "Apple Tech Marketplace",
+    name: "Sheetsway AI Audit Platform",
     description:
-      "Enterprise-level e-commerce platform built with ASP.NET Core and Blazor, featuring advanced product filtering, real-time inventory tracking, and secure payment processing. Includes admin panel for product management and sales analytics dashboard.",
+      "Built full-stack software for clients using React.js, Supabase, Tailwind, and Framer Motion. Helped integrate payments on the platform and built the Sheetsway website UI from scratch.",
     href: "",
-    image: "/assets/projects/apple-tech-store.jpg",
+    image: "/assets/projects/sheetsway.png",
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
-      { id: 1, name: "Blazor" },
-      { id: 2, name: "ASP.NET Core" },
-      { id: 3, name: "SQL Server" },
-      { id: 4, name: "Bootstrap" },
+      { id: 1, name: "Next js" },
+      { id: 2, name: "Supabase" },
+      { id: 3, name: "Tailwind CSS" },
+      { id: 4, name: "Framer Motion" },
     ],
   },
   {
     id: 4,
-    name: "Electronics & Gadgets Store",
+    name: "LogyTutors Education Platform",
     description:
-      "Multi-category e-commerce platform built with Vue.js and Laravel, featuring advanced search, product comparison, and promotional campaigns. Includes customer reviews, wishlist functionality, and integrated inventory management system.",
-    href: "",
-    image: "/assets/projects/electronics-store.jpg",
-    bgImage: "/assets/backgrounds/poster.jpg",
+      "Designed and developed an intuitive online learning platform for LogyTutors, featuring course catalogs, student dashboards, and interactive learning tools to enhance the educational experience.",
+    href: "https://www.logytutors.in/",
+    image: "/assets/projects/logylearn.png",
+    bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
-      { id: 1, name: "Vue.js" },
-      { id: 2, name: "Laravel" },
-      { id: 3, name: "MySQL" },
-      { id: 4, name: "SCSS" },
+      { id: 1, name: "React" },
+      { id: 2, name: "Node.js" },
+      { id: 3, name: "Supabase" },
+      { id: 4, name: "Tailwind CSS" },
     ],
   },
   {
     id: 5,
-    name: "Home Decor Marketplace",
+    name: "Bioclinpharm Pharmaceutical Website",
     description:
-      "Sophisticated marketplace for home decor built with Angular and Firebase, featuring real-time updates, GraphQL API, and Material Design. Includes vendor management, product customization options, and integrated shipping calculator.",
-    href: "",
-    image: "/assets/projects/home-decor-store.jpg",
-    bgImage: "/assets/backgrounds/table.jpg",
+      "Created a professional website for Bioclinpharm showcasing their pharmaceutical products and services with a clean, responsive design that meets industry standards.",
+    href: "https://www.bioclinpharm.com/",
+    image: "/assets/projects/bioclinpharm.png",
+    bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
-      { id: 1, name: "Angular" },
-      { id: 2, name: "Firebase" },
-      { id: 3, name: "GraphQL" },
-      { id: 4, name: "Material UI" },
+      { id: 1, name: "React js" },
+      { id: 2, name: "CSS3" },
+      { id: 3, name: "JavaScript" },
+      { id: 4, name: "Bootstrap" },
     ],
   },
   {
     id: 6,
-    name: "Digital Game Store Platform",
+    name: "CampusCash Student Platform",
     description:
-      "Gaming marketplace developed with Svelte and Node.js, featuring game library management, user reviews, and social features. Includes digital download system, achievement tracking, and community forums for gamers.",
-    href: "",
-    image: "/assets/projects/game-store.jpg",
+      "Developed a comprehensive student financial management platform featuring expense tracking, budget planning, and financial insights to help students manage their finances effectively.",
+    href: "https://campuscashh.vercel.app/",
+    image: "/assets/projects/campuscash.png",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
-      { id: 1, name: "Svelte" },
+      { id: 1, name: "React" },
       { id: 2, name: "Node.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Chakra UI" },
+      { id: 3, name: "Supabase" },
+      { id: 4, name: "Tailwind CSS" },
+    ],
+  },
+  {
+    id: 7,
+    name: "Marketing Portfolio Website",
+    description:
+      "Created a visually stunning marketing portfolio website showcasing services, case studies, and client testimonials with smooth animations and responsive design.",
+    href: "https://marketing-portfolio-website.vercel.app/",
+    image: "/assets/projects/marketing landing page.png",
+    bgImage: "/assets/backgrounds/map.jpg",
+    frameworks: [
+      { id: 1, name: "React" },
+      { id: 2, name: "Framer Motion" },
+      { id: 3, name: "GSAP" },
+      { id: 4, name: "Tailwind CSS" },
+    ],
+  },
+  {
+    id: 8,
+    name: "Learn Hub Education Platform",
+    description:
+      "Developed an innovative online learning platform offering diverse courses and interactive educational content for students of all levels.",
+    href: "https://www.1209silentstakes.com/",
+    image: "/assets/projects/learnhub.png",
+    bgImage: "/assets/backgrounds/blanket.jpg",
+    frameworks: [
+      { id: 1, name: "React" },
+      { id: 2, name: "Node.js" },
+      { id: 3, name: "Supabase" },
+      { id: 4, name: "Tailwind CSS" },
     ],
   },
 ];
 export const socials = [
-  { name: "Instagram", href: "https://www.instagram.com/harshit_vaidya/" },
-  { name: "GitHub", href: "https://github.com/harshitvaidya" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/1akshay/" },
+  { name: "GitHub", href: "https://github.com/akshayrajput12" },
 ];

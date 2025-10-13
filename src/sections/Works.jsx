@@ -10,9 +10,7 @@ const Works = () => {
   const previewRef = useRef(null);
 
   const [currentIndex, setCurrentIndex] = useState(null);
-  const text = `Showcase of full-stack web applications built with modern technologies.
-    Each project demonstrates expertise in React, Node.js, database design,
-    and user experience optimization to deliver measurable business results.`;
+  const text = `Showcase of full-stack web applications built with modern technologies. Each project demonstrates expertise in React, Node.js, database design, and user experience optimization to deliver measurable business results.`;
 
   const mouse = useRef({ x: 0, y: 0 });
   const moveX = useRef(null);
@@ -102,7 +100,7 @@ const Works = () => {
   return (
     <section id="work" className="flex flex-col min-h-screen">
       <AnimatedHeaderSection
-        subTitle={"Logic Meets Aesthetics, Seamlessly"}
+        subTitle={"Portfolio & Projects"}
         title={"Works"}
         text={text}
         textColor={"text-black"}

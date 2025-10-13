@@ -5,22 +5,22 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const About = () => {
-  const text = `Experienced Full Stack Developer with expertise in modern web technologies.
-    I architect and build enterprise-grade applications using React, Node.js,
-    and cloud infrastructure to deliver measurable business results.`;
-  const aboutText = `With over 5 years of experience in full stack development, I specialize in creating robust, scalable web applications using cutting-edge technologies. My expertise spans across:
+  const text = `Frontend and Full-Stack Developer with 2 years of experience building modern web applications.`;
+  const aboutText = `As a passionate Frontend and Full-Stack Developer, I specialize in building modern web applications using React, Next.js, and TypeScript.
 
-🚀 Frontend Development: React.js, Vue.js, TypeScript, responsive design
-⚙️ Backend Engineering: Node.js, Express, RESTful APIs, GraphQL, microservices
-☁️ Cloud & DevOps: AWS, Docker, Kubernetes, CI/CD pipelines, serverless architecture
-🗄️ Database Management: MongoDB, PostgreSQL, Redis, database optimization
+Key skills:
+🚀 Frontend: React.js, Next.js, TypeScript, Tailwind CSS
+⚙️ Animations: Framer Motion, GSAP
+☁️ Backend: Node.js, Supabase, Firebase
+🗄️ Database: MongoDB,My sql
 
-I'm passionate about writing clean, maintainable code and implementing best practices that ensure long-term project success. My approach combines technical excellence with business understanding to deliver solutions that not only work flawlessly but also drive growth and user engagement.
-  When I’m not shipping:
-⚡️ Open-sourcing my latest experiment (or hacking on yours)
-🎥 improving devs on Github because rising tides lift all ships
-🧗 Rock climbing (problem-solving with real stakes)
-🎸 Strumming chords while CI pipelines pass (multitasking at its finest)`;
+Professional Experience:
+• Freelance Developer (2024 - Present)
+  - Built websites and web apps for startups
+  - Technologies: React.js, Next.js, TypeScript, Supabase
+
+• Junior Developer at Sheetsway.com (2024 - 2025)
+  - Developed full-stack applications using React.js and Supabase`;
   const imgRef = useRef(null);
   useGSAP(() => {
     gsap.to("#about", {
@@ -57,8 +57,8 @@ I'm passionate about writing clean, maintainable code and implementing best prac
       <div className="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60">
         <img
           ref={imgRef}
-          src="images/harshit-ai.jpg"
-          alt="Harshit Vaidya"
+          src="images/akshay-ai.png"
+          alt="Akshay Pratap Singh"
           className="w-md rounded-3xl border-2 border-neutral-700/35"
         />
         <AnimatedTextLines text={aboutText} className={"w-full"} />

@@ -5,9 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 const Services = () => {
-  const text = `Professional full-stack development services using modern technologies.
-    I deliver secure, scalable web applications with exceptional user experience
-    that drive business growth and digital transformation.`;
+  const text = `Professional frontend and full-stack development services using modern technologies. I deliver secure, scalable web applications with exceptional user experience that drive business growth and digital transformation.`;
   const serviceRefs = useRef([]);
   const isDesktop = useMediaQuery({ minWidth: "48rem" }); //768px
   useGSAP(() => {
@@ -28,8 +26,8 @@ const Services = () => {
   return (
     <section id="services" className="min-h-screen bg-black rounded-t-4xl">
       <AnimatedHeaderSection
-        subTitle={"Behind the Scene, Beyond the Screen"}
-        title={"Service"}
+        subTitle={"Expertise & Services"}
+        title={"Services"}
         text={text}
         textColor={"text-white"}
         withScrollTrigger={true}
