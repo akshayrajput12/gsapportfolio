@@ -198,6 +198,21 @@ export const projects = [
       { id: 4, name: "Tailwind CSS" },
     ],
   },
+  {
+    id: 9,
+    name: "The Super Sweets E-Commerce",
+    description:
+      "Developed a vibrant and engaging e-commerce platform for The Super Sweets, featuring product catalogs, shopping cart functionality, and secure payment processing.",
+    href: "https://www.thesupersweets.com/",
+    image: "/assets/projects/supersweets.png",
+    bgImage: "/assets/backgrounds/curtains.jpg",
+    frameworks: [
+      { id: 1, name: "React" },
+      { id: 2, name: "Next.js" },
+      { id: 3, name: "Stripe" },
+      { id: 4, name: "Tailwind CSS" },
+    ],
+  },
 ];
 export const socials = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/1akshay/" },
