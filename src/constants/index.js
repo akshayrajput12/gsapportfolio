@@ -77,6 +77,7 @@ export const servicesData = [
     ],
   },
 ];
+
 export const projects = [
   {
     id: 1,
@@ -84,7 +85,7 @@ export const projects = [
     description:
       "Developed a highly animated, visually engaging website using modern animation frameworks such as Framer Motion and GSAP, enhancing user interaction and retention.",
     href: "https://github.com/akshayrajput12/Ochi-Locomotive-react-based-project-",
-    image: "/assets/projects/orchi.png",
+    image: "/assets/projects-optimized/orchi.webp",
     bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
       { id: 1, name: "React" },
@@ -99,7 +100,7 @@ export const projects = [
     description:
       "Built an e-commerce platform for a clothing brand, featuring a user-friendly shopping interface and a comprehensive admin panel for inventory and order management. Integrated Razorpay for secure payment processing.",
     href: "https://github.com/akshayrajput12/crazysnitch-fashion-hub",
-    image: "/assets/projects/crazysnitch.png",
+    image: "/assets/projects-optimized/crazysnitch.webp",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
       { id: 1, name: "Typescript" },
@@ -114,7 +115,7 @@ export const projects = [
     description:
       "Built full-stack software for clients using React.js, Supabase, Tailwind, and Framer Motion. Helped integrate payments on the platform and built the Sheetsway website UI from scratch.",
     href: "",
-    image: "/assets/projects/sheetsway.png",
+    image: "/assets/projects-optimized/sheetsway.webp",
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
       { id: 1, name: "Next js" },
@@ -129,7 +130,7 @@ export const projects = [
     description:
       "Designed and developed an intuitive online learning platform for LogyTutors, featuring course catalogs, student dashboards, and interactive learning tools to enhance the educational experience.",
     href: "https://www.logytutors.in/",
-    image: "/assets/projects/logylearn.png",
+    image: "/assets/projects-optimized/logylearn.webp",
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
       { id: 1, name: "React" },
@@ -144,7 +145,7 @@ export const projects = [
     description:
       "Created a professional website for Bioclinpharm showcasing their pharmaceutical products and services with a clean, responsive design that meets industry standards.",
     href: "https://www.bioclinpharm.com/",
-    image: "/assets/projects/bioclinpharm.png",
+    image: "/assets/projects-optimized/bioclinpharm.webp",
     bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
       { id: 1, name: "React js" },
@@ -159,7 +160,7 @@ export const projects = [
     description:
       "Developed a comprehensive student financial management platform featuring expense tracking, budget planning, and financial insights to help students manage their finances effectively.",
     href: "https://campuscashh.vercel.app/",
-    image: "/assets/projects/campuscash.png",
+    image: "/assets/projects-optimized/campuscash.webp",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
       { id: 1, name: "React" },
@@ -174,7 +175,7 @@ export const projects = [
     description:
       "Created a visually stunning marketing portfolio website showcasing services, case studies, and client testimonials with smooth animations and responsive design.",
     href: "https://marketing-portfolio-website.vercel.app/",
-    image: "/assets/projects/marketing landing page.png",
+    image: "/assets/projects-optimized/marketing landing page.webp",
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
       { id: 1, name: "React" },
@@ -189,7 +190,7 @@ export const projects = [
     description:
       "Developed an innovative online learning platform offering diverse courses and interactive educational content for students of all levels.",
     href: "https://www.1209silentstakes.com/",
-    image: "/assets/projects/learnhub.png",
+    image: "/assets/projects-optimized/learnhub.webp",
     bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
       { id: 1, name: "React" },
@@ -204,7 +205,7 @@ export const projects = [
     description:
       "Developed a vibrant and engaging e-commerce platform for The Super Sweets, featuring product catalogs, shopping cart functionality, and secure payment processing.",
     href: "https://www.thesupersweets.com/",
-    image: "/assets/projects/supersweets.png",
+    image: "/assets/projects-optimized/supersweets.webp",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
       { id: 1, name: "React" },
@@ -214,6 +215,7 @@ export const projects = [
     ],
   },
 ];
+
 export const socials = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/1akshay/" },
   { name: "GitHub", href: "https://github.com/akshayrajput12" },

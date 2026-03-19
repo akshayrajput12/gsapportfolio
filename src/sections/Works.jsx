@@ -10,7 +10,7 @@ const Works = () => {
   const previewRef = useRef(null);
 
   const [currentIndex, setCurrentIndex] = useState(null);
-  const text = `Showcase of full-stack web applications built with modern technologies. Each project demonstrates expertise in React, Node.js, database design, and user experience optimization to deliver measurable business results.`;
+  const text = `Full-stack web applications built with modern technologies showcasing React, Node.js, and database expertise.`;
 
   const mouse = useRef({ x: 0, y: 0 });
   const moveX = useRef(null);
@@ -26,159 +26,165 @@ const Works = () => {
       ease: "power3.out",
     });
 
-    gsap.from("#project", {
-      y: 100,
+    gsap.from(".project-item", {
+      y: 60,
       opacity: 0,
-      delay: 0.5,
-      duration: 1,
-      stagger: 0.3,
-      ease: "back.out",
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power2.out",
       scrollTrigger: {
-        trigger: "#project",
+        trigger: ".project-container",
+        start: "top 80%",
       },
     });
   }, []);
 
   const handleMouseEnter = (index) => {
-    if (window.innerWidth < 768) return;
     setCurrentIndex(index);
-
-    const el = overlayRefs.current[index];
-    if (!el) return;
-
-    gsap.killTweensOf(el);
-    gsap.fromTo(
-      el,
-      {
-        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      },
-      {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        duration: 0.15,
-        ease: "power2.out",
-      }
-    );
-
-    gsap.to(previewRef.current, {
-      opacity: 1,
-      scale: 1,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const handleMouseLeave = (index) => {
-    if (window.innerWidth < 768) return;
-    setCurrentIndex(null);
-
     const el = overlayRefs.current[index];
     if (!el) return;
 
     gsap.killTweensOf(el);
     gsap.to(el, {
-      clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      duration: 0.2,
-      ease: "power2.in",
-    });
-
-    gsap.to(previewRef.current, {
-      opacity: 0,
-      scale: 0.95,
-      duration: 0.3,
+      opacity: 1,
+      duration: 0.4,
       ease: "power2.out",
     });
-  };
 
-  const handleMouseMove = (e) => {
-    if (window.innerWidth < 768) return;
-    mouse.current.x = e.clientX + 24;
-    mouse.current.y = e.clientY + 24;
-    moveX.current(mouse.current.x);
-    moveY.current(mouse.current.y);
-  };
-
-  const handleProjectClick = (url) => {
-    if (url) {
-      window.open(url, "_blank");
+    if (window.innerWidth >= 768) {
+      gsap.to(previewRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: "power3.out",
+      });
     }
   };
 
+  const handleMouseLeave = (index) => {
+    const el = overlayRefs.current[index];
+    if (!el) return;
+
+    gsap.killTweensOf(el);
+    gsap.to(el, {
+      opacity: 0,
+      duration: 0.4,
+      ease: "power2.in",
+    });
+
+    if (window.innerWidth >= 768) {
+      gsap.to(previewRef.current, {
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.4,
+        ease: "power3.in",
+      });
+    }
+    setCurrentIndex(null);
+  };
+
+  const handleMouseMove = (e) => {
+    if (window.innerWidth < 1024) return;
+    const { clientX, clientY } = e;
+    
+    // Smoothly track mouse with a slight float effect
+    if (moveX.current && moveY.current) {
+        moveX.current(clientX + 20);
+        moveY.current(clientY + 20);
+    }
+  };
+
+  const handleProjectClick = (url) => {
+    if (url) window.open(url, "_blank");
+  };
+
   return (
-    <section id="work" className="flex flex-col min-h-screen">
+    <section id="work" className="relative flex flex-col min-h-screen py-20 bg-transparent overflow-hidden">
       <AnimatedHeaderSection
-        subTitle={"Portfolio & Projects"}
+        subTitle={"Portfolio & Experience"}
         title={"Works"}
         text={text}
-        textColor={"text-black"}
+        textColor={"text-text"}
         withScrollTrigger={true}
       />
+      
       <div
-        className="relative flex flex-col font-light"
+        className="project-container relative flex flex-col font-light mt-10"
         onMouseMove={handleMouseMove}
       >
         {projects.map((project, index) => (
           <div
             key={project.id}
-            id="project"
-            className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
+            className="project-item relative group py-8 md:py-12 border-b border-white/5 cursor-pointer transition-colors hover:bg-white/[0.02]"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
             onClick={() => handleProjectClick(project.href)}
           >
-            {/* overlay */}
+            {/* Background Overlay */}
             <div
-              ref={(el) => {
-                overlayRefs.current[index] = el;
-              }}
-              className="absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path"
+              ref={(el) => (overlayRefs.current[index] = el)}
+              className="absolute inset-0 bg-gradient-to-r from-white/[0.05] to-transparent opacity-0 pointer-events-none transition-opacity"
             />
 
-            {/* title */}
-            <div className="flex justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
-              <h2 className="lg:text-[32px] text-[26px] leading-none">
-                {project.name}
-              </h2>
-              <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5" />
+            <div className="relative z-10 px-6 md:px-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              {/* ID and Basic Info */}
+              <div className="flex items-center gap-8 md:w-1/2">
+                <span className="text-[10px] font-mono text-white/20 tracking-[0.5em]">
+                  0{project.id}
+                </span>
+                <div className="flex flex-col gap-1">
+                   <h2 className="text-3xl md:text-5xl lg:text-7xl font-thin text-white tracking-widest uppercase transition-all group-hover:translate-x-6">
+                    {project.name}
+                  </h2>
+                  <div className="flex flex-wrap gap-3 mt-2">
+                    {project.frameworks.map((f) => (
+                      <span key={f.id} className="text-[9px] font-bold text-white/30 uppercase tracking-widest border border-white/10 px-2 py-0.5 rounded-sm">
+                        {f.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action/Icon */}
+              <div className="flex items-center gap-4 text-white/40 group-hover:text-white transition-colors self-end md:self-center">
+                 <span className="text-[10px] uppercase font-bold tracking-widest hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">Launch Manifest</span>
+                 <Icon icon="lucide:arrow-up-right" className="text-xl md:text-4xl transform group-hover:rotate-45 transition-transform" />
+              </div>
             </div>
-            {/* divider */}
-            <div className="w-full h-0.5 bg-black/80" />
-            {/* framework */}
-            <div className="flex px-10 text-xs leading-loose uppercase transtion-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
-              {project.frameworks.map((framework) => (
-                <p
-                  key={framework.id}
-                  className="text-black transition-colors duration-500 md:group-hover:text-white"
-                >
-                  {framework.name}
-                </p>
-              ))}
-            </div>
-            {/* mobile preview image */}
-            <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
-              <img
-                src={project.bgImage}
-                alt={`${project.name}-bg-image`}
-                className="object-cover w-full h-full rounded-md brightness-50"
-              />
-              <img
-                src={project.image}
-                alt={`${project.name}-image`}
-                className="absolute bg-center px-14 rounded-xl"
-              />
+
+            {/* Mobile Preview Container */}
+            <div className="md:hidden mt-10 px-6">
+              <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+                 <img
+                  src={project.image}
+                  alt={project.name}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                />
+                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                   <p className="text-[10px] text-white/80 line-clamp-2 leading-relaxed">
+                     {project.description}
+                   </p>
+                </div>
+              </div>
             </div>
           </div>
         ))}
-        {/* desktop Floating preview image */}
+
+        {/* Desktop Floating Preview */}
         <div
           ref={previewRef}
-          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-black pointer-events-none w-[480px] h-[300px] md:block hidden opacity-0 rounded-lg shadow-2xl"
+          className="fixed pointer-events-none z-[100] w-[480px] aspect-video rounded-2xl overflow-hidden border border-white/30 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.6)] opacity-0 scale-90 will-change-transform hidden lg:block backdrop-blur-md"
         >
           {currentIndex !== null && (
-            <img
-              src={projects[currentIndex].image}
-              alt="preview"
-              className="object-cover w-full h-full rounded-md"
-            />
+            <div className="relative w-full h-full bg-[#0a0a0a]">
+              <img
+                src={projects[currentIndex].image}
+                alt="Project Preview"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+            </div>
           )}
         </div>
       </div>

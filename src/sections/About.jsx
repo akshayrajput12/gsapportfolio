@@ -1,67 +1,74 @@
-import { useRef } from "react";
-import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { AnimatedTextLines } from "../components/AnimatedTextLines";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  const text = `Frontend and Full-Stack Developer with 2 years of experience building modern web applications.`;
-  const aboutText = `As a passionate Frontend and Full-Stack Developer, I specialize in building modern web applications using React, Next.js, and TypeScript.
-
-Key skills:
-🚀 Frontend: React.js, Next.js, TypeScript, Tailwind CSS
-⚙️ Animations: Framer Motion, GSAP
-☁️ Backend: Node.js, Supabase, Firebase
-🗄️ Database: MongoDB,My sql
-
-Professional Experience:
-• Freelance Developer (2024 - Present)
-  - Built websites and web apps for startups
-  - Technologies: React.js, Next.js, TypeScript, Supabase
-
-• Junior Developer at Sheetsway.com (2024 - 2025)
-  - Developed full-stack applications using React.js and Supabase`;
-  const imgRef = useRef(null);
   useGSAP(() => {
-    gsap.to("#about", {
-      scale: 0.95,
+    gsap.to("#about-title-1", {
+      xPercent: -20,
       scrollTrigger: {
-        trigger: "#about",
-        start: "bottom 80%",
-        end: "bottom 20%",
+        target: "#about-title-1",
         scrub: true,
-        markers: false,
       },
-      ease: "power1.inOut",
     });
-
-    gsap.set(imgRef.current, {
-      clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
+    gsap.to("#about-title-2", {
+      xPercent: 30,
+      scrollTrigger: {
+        target: "#about-title-2",
+        scrub: true,
+      },
     });
-    gsap.to(imgRef.current, {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      duration: 2,
-      ease: "power4.out",
-      scrollTrigger: { trigger: imgRef.current },
+    gsap.to("#about-title-3", {
+      xPercent: -50,
+      scrollTrigger: {
+        target: "#about-title-3",
+        scrub: true,
+      },
+    });
+    gsap.to("#about-title-4", {
+      xPercent: 50,
+      scrollTrigger: {
+        target: "#about-title-4",
+        scrub: true,
+      },
+    });
+    gsap.to("#about-title-5", {
+      xPercent: -30,
+      scrollTrigger: {
+        target: "#about-title-5",
+        scrub: true,
+      },
     });
   });
+
   return (
-    <section id="about" className="min-h-screen bg-black rounded-b-4xl">
-      <AnimatedHeaderSection
-        subTitle={"Code with Purpose, Built to Scale"}
-        title={"About"}
-        text={text}
-        textColor={"text-white"}
-        withScrollTrigger={true}
-      />
-      <div className="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60">
-        <img
-          ref={imgRef}
-          src="images/akshay-ai.png"
-          alt="Akshay Pratap Singh"
-          className="w-md rounded-3xl border-2 border-neutral-700/35"
-        />
-        <AnimatedTextLines text={aboutText} className={"w-full"} />
+    <section id="about" className="relative mt-16 overflow-hidden font-light leading-snug text-center mb-32 contact-text-responsive">
+      <div id="about-title-1" className="flex items-center justify-center gap-3 -translate-x-32">
+        <p className="font-normal">2+ Years</p>
+        <div className="w-8 h-0.5 md:w-24 bg-gold" />
+        <p>Experience</p>
+      </div>
+      
+      <div id="about-title-2">
+        <p>Frontend & Full-Stack Developer</p>
+      </div>
+      
+      <div id="about-title-3" className="flex items-center justify-center gap-3 translate-x-48">
+        <p>React & Next.js</p>
+        <div className="w-8 h-0.5 md:w-24 bg-gold" />
+        <p>TypeScript</p>
+      </div>
+      
+      <div id="about-title-4" className="flex items-center justify-center gap-3 -translate-x-24">
+        <p>Building Modern</p>
+        <div className="w-8 h-0.5 md:w-24 bg-gold" />
+        <p>Web Solutions</p>
+      </div>
+      
+      <div id="about-title-5">
+        <p>Crafting Digital Experiences</p>
       </div>
     </section>
   );

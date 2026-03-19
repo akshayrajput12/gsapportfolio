@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Preload critical resources for faster initial load -->
+    <link rel="preload" as="image" type="image/webp" href="/assets/backgrounds/frames-responsive/mobile/frame_000.webp" media="(max-width: 767px)" />
+    <link rel="preload" as="image" type="image/webp" href="/assets/backgrounds/frames-responsive/tablet/frame_000.webp" media="(min-width: 768px) and (max-width: 1023px)" />
+    <link rel="preload" as="image" type="image/webp" href="/assets/backgrounds/frames-responsive/desktop/frame_000.webp" media="(min-width: 1024px)" />
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 
     <!-- Primary Meta Tags -->
     <title>Akshay Pratap Singh - Full Stack Developer | React, Node.js, DevOps Expert</title>
@@ -35,7 +44,7 @@
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#000000" />
     <meta name="msapplication-TileColor" content="#000000" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!-- Structured Data -->

@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 gsap.registerPlugin(Observer);
 const Marquee = ({
   items,
-  className = "text-white bg-black",
+  className = "text-text bg-primary",
   icon = "mdi:star-four-points",
   iconClassName = "",
   reverse = false,
@@ -124,22 +124,6 @@ const Marquee = ({
       reversed: reverse,
     });
 
-    Observer.create({
-      onChangeY(self) {
-        let factor = 2.5;
-        if ((!reverse && self.deltaY < 0) || (reverse && self.deltaY > 0)) {
-          factor *= -1;
-        }
-        gsap
-          .timeline({
-            defaults: {
-              ease: "none",
-            },
-          })
-          .to(tl, { timeScale: factor * 2.5, duration: 0.2, overwrite: true })
-          .to(tl, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
-      },
-    });
     return () => tl.kill();
   }, [items, reverse]);
   return (
@@ -149,13 +133,13 @@ const Marquee = ({
     >
       <div className="flex">
         {items.map((text, index) => (
-          <span
+          <div
             key={index}
             ref={(el) => (itemsRef.current[index] = el)}
-            className="flex items-center px-16 gap-x-32"
+            className="flex items-center px-24 gap-12"
           >
             {text} <Icon icon={icon} className={iconClassName} />
-          </span>
+          </div>
         ))}
       </div>
     </div>

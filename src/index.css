@@ -3,8 +3,8 @@
 /* Amiamie Regular */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-Regular.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-Regular.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-Regular.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -13,8 +13,8 @@
 /* Amiamie Regular Italic */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-Italic.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-Italic.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-Italic.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -23,8 +23,8 @@
 /* Amiamie Light */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-Light.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-Light.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-Light.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -33,8 +33,8 @@
 /* Amiamie Light Italic */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-LightItalic.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-LightItalic.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-LightItalic.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-LightItalic.ttf") format("truetype");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -43,8 +43,8 @@
 /* Amiamie Black */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-Black.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-Black.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-Black.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -53,8 +53,8 @@
 /* Amiamie Black Italic */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-BlackItalic.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-BlackItalic.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-BlackItalic.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-BlackItalic.ttf") format("truetype");
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -63,8 +63,8 @@
 /* Amiamie-Round Variants (if needed separately) */
 @font-face {
   font-family: "Amiamie-Round";
-  src: url("/fonts/otf/Amiamie-RegularRound.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-RegularRound.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-RegularRound.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-RegularRound.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -72,8 +72,8 @@
 
 @font-face {
   font-family: "Amiamie-Round";
-  src: url("/fonts/otf/Amiamie-BlackRound.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-BlackRound.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-BlackRound.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-BlackRound.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -81,16 +81,19 @@
 
 @font-face {
   font-family: "Amiamie-Round";
-  src: url("/fonts/otf/Amiamie-BlackItalicRound.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-BlackItalicRound.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-BlackItalicRound.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-BlackItalicRound.ttf") format("truetype");
   font-weight: 900;
   font-style: italic;
   font-display: swap;
 }
 @theme {
-  --color-primary: #e5e5e0;
-  --color-DarkLava: #393632;
-  --color-SageGray: #8b8b73;
+  --color-primary: #040d18;
+  --color-secondary: #020d1e;
+  --color-accent: #07162a;
+  --color-highlight: #030f1b;
+  --color-text: #e5e5e0;
+  --color-text-muted: #8b9bb4;
   --color-gold: #cfa355;
   --font-amiamie: "Amiamie", sans-serif;
   --font-amiamie-round: "Amiamie-Round", sans-serif;
@@ -115,8 +118,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 body {
-  background: #e5e5e0;
-  color: black;
+  background: var(--color-primary);
+  color: var(--color-text);
   scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: var(--font-amiamie);
@@ -133,17 +136,71 @@ body::-webkit-scrollbar {
 }
 
 @utility banner-text-responsive {
-  @apply text-[68px] sm:text-[118px] md:text-[126px] lg:text-[152px] leading-9 sm:leading-16 lg:leading-20;
+  @apply text-[42px] sm:text-[68px] md:text-[86px] lg:text-[98px] leading-7 sm:leading-10 lg:leading-14;
 }
 
 @utility value-text-responsive {
-  @apply text-2xl md:text-[26px] lg:text-[32px];
+  @apply text-base md:text-lg lg:text-xl;
 }
 
 @utility marquee-text-responsive {
-  @apply text-[28px] sm:text-[36px] lg:text-[42px];
+  @apply text-xl sm:text-2xl lg:text-[28px];
 }
 
 @utility contact-text-responsive {
-  @apply text-[42px] sm:text-[52px] md:text-[62px] lg:text-[100px];
+  @apply text-[32px] sm:text-[42px] md:text-[52px] lg:text-[72px];
+}
+
+/* Custom scrollbar for heatmap */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Scrollbar Firefox */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Contribution square animations */
+@keyframes fillSquare {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.contribution-square {
+  animation: fillSquare 0.3s ease-out backwards;
+}
+
+/* Glow effect for high activity days */
+@keyframes glow {
+  from, to {
+    box-shadow: 0 0 5px rgba(35, 154, 59, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(35, 154, 59, 0.6);
+  }
+}
+
+.contribution-square[style*="box-shadow: rgb(35, 154, 59)"] {
+  animation: glow 2s ease-in-out infinite;
 }
