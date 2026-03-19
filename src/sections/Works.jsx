@@ -4,25 +4,36 @@ import { projects } from "../constants";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Preview card dimensions
+const PREVIEW_W = 420;
+const PREVIEW_H = Math.round(PREVIEW_W * (9 / 16));
+const OFFSET_X = 28;   // gap to the right of the cursor
+const OFFSET_Y = -60;   // slightly above cursor centre
 
 const Works = () => {
   const overlayRefs = useRef([]);
   const previewRef = useRef(null);
+  const hasMovedRef = useRef(false); // tracks whether we've set initial position
 
   const [currentIndex, setCurrentIndex] = useState(null);
   const text = `Full-stack web applications built with modern technologies showcasing React, Node.js, and database expertise.`;
 
-  const mouse = useRef({ x: 0, y: 0 });
   const moveX = useRef(null);
   const moveY = useRef(null);
 
   useGSAP(() => {
-    moveX.current = gsap.quickTo(previewRef.current, "x", {
-      duration: 1.5,
+    // Drive left/top (viewport-relative) with quickTo — NOT transform x/y.
+    // This avoids the transform-origin jump that caused the offset bug.
+    moveX.current = gsap.quickTo(previewRef.current, "left", {
+      duration: 0.55,
       ease: "power3.out",
     });
-    moveY.current = gsap.quickTo(previewRef.current, "y", {
-      duration: 2,
+    moveY.current = gsap.quickTo(previewRef.current, "top", {
+      duration: 0.65,
       ease: "power3.out",
     });
 
@@ -39,58 +50,67 @@ const Works = () => {
     });
   }, []);
 
+  // Clamp so the card never leaves the visible viewport
+  const clampX = (x) => Math.min(x, window.innerWidth - PREVIEW_W - 16);
+  const clampY = (y) => Math.max(16, Math.min(y, window.innerHeight - PREVIEW_H - 16));
+
+  // Instantly place the card at the cursor before the first animated move.
+  // Without this, the card animates from (−9999, −9999) across the screen.
+  const teleport = (clientX, clientY) => {
+    gsap.set(previewRef.current, {
+      left: clampX(clientX + OFFSET_X),
+      top: clampY(clientY + OFFSET_Y),
+    });
+  };
+
   const handleMouseEnter = (index) => {
     setCurrentIndex(index);
+    hasMovedRef.current = false; // force teleport on next mousemove
+
     const el = overlayRefs.current[index];
-    if (!el) return;
-
-    gsap.killTweensOf(el);
-    gsap.to(el, {
-      opacity: 1,
-      duration: 0.4,
-      ease: "power2.out",
-    });
-
-    if (window.innerWidth >= 768) {
-      gsap.to(previewRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.5,
-        ease: "power3.out",
-      });
+    if (el) {
+      gsap.killTweensOf(el);
+      gsap.to(el, { opacity: 1, duration: 0.35, ease: "power2.out" });
     }
   };
 
   const handleMouseLeave = (index) => {
     const el = overlayRefs.current[index];
-    if (!el) return;
+    if (el) {
+      gsap.killTweensOf(el);
+      gsap.to(el, { opacity: 0, duration: 0.35, ease: "power2.in" });
+    }
 
-    gsap.killTweensOf(el);
-    gsap.to(el, {
+    gsap.to(previewRef.current, {
       opacity: 0,
-      duration: 0.4,
+      scale: 0.92,
+      duration: 0.3,
       ease: "power2.in",
     });
 
-    if (window.innerWidth >= 768) {
-      gsap.to(previewRef.current, {
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.4,
-        ease: "power3.in",
-      });
-    }
+    hasMovedRef.current = false;
     setCurrentIndex(null);
   };
 
   const handleMouseMove = (e) => {
     if (window.innerWidth < 1024) return;
     const { clientX, clientY } = e;
-    
-    // Smoothly track mouse with a slight float effect
-    if (moveX.current && moveY.current) {
-        moveX.current(clientX + 20);
-        moveY.current(clientY + 20);
+
+    if (!hasMovedRef.current) {
+      // First move after entering a row: snap into position, then reveal
+      teleport(clientX, clientY);
+      hasMovedRef.current = true;
+
+      gsap.to(previewRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.4,
+        ease: "power3.out",
+      });
+    } else {
+      // All subsequent moves: smooth animated follow
+      moveX.current?.(clampX(clientX + OFFSET_X));
+      moveY.current?.(clampY(clientY + OFFSET_Y));
     }
   };
 
@@ -99,7 +119,10 @@ const Works = () => {
   };
 
   return (
-    <section id="work" className="relative flex flex-col min-h-screen py-20 bg-transparent overflow-hidden">
+    <section
+      id="work"
+      className="relative flex flex-col min-h-screen py-20 bg-transparent overflow-hidden"
+    >
       <AnimatedHeaderSection
         subTitle={"Portfolio & Experience"}
         title={"Works"}
@@ -107,7 +130,7 @@ const Works = () => {
         textColor={"text-text"}
         withScrollTrigger={true}
       />
-      
+
       <div
         className="project-container relative flex flex-col font-light mt-10"
         onMouseMove={handleMouseMove}
@@ -120,25 +143,28 @@ const Works = () => {
             onMouseLeave={() => handleMouseLeave(index)}
             onClick={() => handleProjectClick(project.href)}
           >
-            {/* Background Overlay */}
+            {/* Row background overlay */}
             <div
               ref={(el) => (overlayRefs.current[index] = el)}
-              className="absolute inset-0 bg-gradient-to-r from-white/[0.05] to-transparent opacity-0 pointer-events-none transition-opacity"
+              className="absolute inset-0 bg-gradient-to-r from-white/[0.05] to-transparent opacity-0 pointer-events-none"
             />
 
             <div className="relative z-10 px-6 md:px-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              {/* ID and Basic Info */}
+              {/* ID + title + tags */}
               <div className="flex items-center gap-8 md:w-1/2">
                 <span className="text-[10px] font-mono text-white/20 tracking-[0.5em]">
                   0{project.id}
                 </span>
                 <div className="flex flex-col gap-1">
-                   <h2 className="text-3xl md:text-5xl lg:text-7xl font-thin text-white tracking-widest uppercase transition-all group-hover:translate-x-6">
+                  <h2 className="text-3xl md:text-5xl lg:text-7xl font-thin text-white tracking-widest uppercase transition-transform duration-500 group-hover:translate-x-6">
                     {project.name}
                   </h2>
                   <div className="flex flex-wrap gap-3 mt-2">
                     {project.frameworks.map((f) => (
-                      <span key={f.id} className="text-[9px] font-bold text-white/30 uppercase tracking-widest border border-white/10 px-2 py-0.5 rounded-sm">
+                      <span
+                        key={f.id}
+                        className="text-[9px] font-bold text-white/30 uppercase tracking-widest border border-white/10 px-2 py-0.5 rounded-sm"
+                      >
                         {f.name}
                       </span>
                     ))}
@@ -146,44 +172,73 @@ const Works = () => {
                 </div>
               </div>
 
-              {/* Action/Icon */}
+              {/* Arrow */}
               <div className="flex items-center gap-4 text-white/40 group-hover:text-white transition-colors self-end md:self-center">
-                 <span className="text-[10px] uppercase font-bold tracking-widest hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">Launch Manifest</span>
-                 <Icon icon="lucide:arrow-up-right" className="text-xl md:text-4xl transform group-hover:rotate-45 transition-transform" />
+                <span className="text-[10px] uppercase font-bold tracking-widest hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">
+                  Launch Manifest
+                </span>
+                <Icon
+                  icon="lucide:arrow-up-right"
+                  className="text-xl md:text-4xl transform group-hover:rotate-45 transition-transform"
+                />
               </div>
             </div>
 
-            {/* Mobile Preview Container */}
+            {/* Mobile-only inline preview */}
             <div className="md:hidden mt-10 px-6">
               <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-                 <img
+                <img
                   src={project.image}
                   alt={project.name}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                   <p className="text-[10px] text-white/80 line-clamp-2 leading-relaxed">
-                     {project.description}
-                   </p>
+                  <p className="text-[10px] text-white/80 line-clamp-2 leading-relaxed">
+                    {project.description}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         ))}
 
-        {/* Desktop Floating Preview */}
+        {/*
+          ── Desktop floating preview card ──────────────────────────────────
+          Fixes applied vs original:
+          1. Driven by `left`/`top` (not gsap x/y / transform) so the card
+             position is purely viewport-relative with no transform-origin offset.
+          2. Starts at left:-9999 / top:-9999 (offscreen) so it never flashes
+             at (0,0) before the first mousemove.
+          3. `teleport()` snaps it to the real cursor position before the
+             fade-in, eliminating the cross-screen slide on first enter.
+          4. `scale` is reset to 1 on enter and 0.92 on leave — pure opacity
+             + scale, no positional conflict with the quickTo drivers.
+        */}
         <div
           ref={previewRef}
-          className="fixed pointer-events-none z-[100] w-[480px] aspect-video rounded-2xl overflow-hidden border border-white/30 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.6)] opacity-0 scale-90 will-change-transform hidden lg:block backdrop-blur-md"
+          className="fixed pointer-events-none z-[100] rounded-2xl overflow-hidden border border-white/20 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.7)] opacity-0 will-change-transform hidden lg:block"
+          style={{
+            width: PREVIEW_W,
+            height: PREVIEW_H,
+            left: -9999,
+            top: -9999,
+            transform: "scale(0.92)",
+          }}
         >
-          {currentIndex !== null && (
+          {currentIndex !== null && projects[currentIndex] && (
             <div className="relative w-full h-full bg-[#0a0a0a]">
               <img
                 src={projects[currentIndex].image}
-                alt="Project Preview"
+                alt={projects[currentIndex].name}
                 className="w-full h-full object-cover"
+                draggable={false}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10" />
+              <div className="absolute bottom-0 inset-x-0 px-5 py-4">
+                <p className="text-[10px] font-mono text-white/50 uppercase tracking-[0.35em] truncate">
+                  {projects[currentIndex].name}
+                </p>
+              </div>
             </div>
           )}
         </div>
