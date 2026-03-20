@@ -5,7 +5,7 @@ import gsap from "gsap";
 
 const Contact = () => {
   const text = `Let's discuss your project requirements. Available for freelance opportunities and full-time positions.`;
-  
+
   useGSAP(() => {
     gsap.from(".social-link", {
       y: 100,
@@ -19,7 +19,7 @@ const Contact = () => {
       },
     });
   }, []);
-  
+
   return (
     <section
       id="contact"
@@ -46,7 +46,7 @@ const Contact = () => {
               <h2>Phone</h2>
               <div className="w-full h-px my-2 bg-text/30" />
               <p className="text-base lowercase md:text-lg lg:text-xl">
-                +191 9653814628
+                +91 9653814628
               </p>
             </div>
             <div className="social-link">

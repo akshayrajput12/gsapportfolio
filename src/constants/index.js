@@ -1,4 +1,11 @@
 // index.js
+
+export const getDynamicThumbnail = (targetUrl) => {
+  if (!targetUrl) return "";
+  // Using mircrolink for dynamic screenshots as requested ("just like vercel take and show us thumbail")
+  return `https://api.microlink.io?url=${encodeURIComponent(targetUrl)}&screenshot=true&meta=false&embed=screenshot.url`;
+};
+
 export const servicesData = [
   {
     title: "Frontend Development",
@@ -126,21 +133,6 @@ export const projects = [
   },
   {
     id: 4,
-    name: "LogyTutors Education Platform",
-    description:
-      "Designed and developed an intuitive online learning platform for LogyTutors, featuring course catalogs, student dashboards, and interactive learning tools to enhance the educational experience.",
-    href: "https://www.logytutors.in/",
-    image: "/assets/projects-optimized/logylearn.webp",
-    bgImage: "/assets/backgrounds/map.jpg",
-    frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "Supabase" },
-      { id: 4, name: "Tailwind CSS" },
-    ],
-  },
-  {
-    id: 5,
     name: "Bioclinpharm Pharmaceutical Website",
     description:
       "Created a professional website for Bioclinpharm showcasing their pharmaceutical products and services with a clean, responsive design that meets industry standards.",
@@ -155,7 +147,7 @@ export const projects = [
     ],
   },
   {
-    id: 6,
+    id: 5,
     name: "CampusCash Student Platform",
     description:
       "Developed a comprehensive student financial management platform featuring expense tracking, budget planning, and financial insights to help students manage their finances effectively.",
@@ -170,7 +162,7 @@ export const projects = [
     ],
   },
   {
-    id: 7,
+    id: 6,
     name: "Marketing Portfolio Website",
     description:
       "Created a visually stunning marketing portfolio website showcasing services, case studies, and client testimonials with smooth animations and responsive design.",
@@ -185,22 +177,7 @@ export const projects = [
     ],
   },
   {
-    id: 8,
-    name: "Learn Hub Education Platform",
-    description:
-      "Developed an innovative online learning platform offering diverse courses and interactive educational content for students of all levels.",
-    href: "https://www.1209silentstakes.com/",
-    image: "/assets/projects-optimized/learnhub.webp",
-    bgImage: "/assets/backgrounds/blanket.jpg",
-    frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "Supabase" },
-      { id: 4, name: "Tailwind CSS" },
-    ],
-  },
-  {
-    id: 9,
+    id: 7,
     name: "The Super Sweets E-Commerce",
     description:
       "Developed a vibrant and engaging e-commerce platform for The Super Sweets, featuring product catalogs, shopping cart functionality, and secure payment processing.",
@@ -214,7 +191,71 @@ export const projects = [
       { id: 4, name: "Tailwind CSS" },
     ],
   },
+  {
+    id: 8,
+    name: "Chronicle Exhibits",
+    description:
+      "A complete, dynamically built platform for Chronicle Exhibits using Next.js and Supabase. Features a robust admin panel built with React.js, advanced state management with Zustand, and smooth animations powered by Framer Motion. Every single interaction and page is fully dynamic, ensuring a premium digital exhibition experience.",
+    href: "https://chronicleexhibits.eu/",
+    image: "dynamic", // Mark as dynamic
+    bgImage: "/assets/backgrounds/map.jpg",
+    frameworks: [
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "Supabase" },
+      { id: 3, name: "Zustand" },
+      { id: 4, name: "TypeScript" },
+      { id: 5, name: "Framer Motion" },
+      { id: 6, name: "React JS" },
+    ],
+  },
+  {
+    id: 9,
+    name: "Greater Infra Projects",
+    description:
+      "A sophisticated real estate platform for Greater Infra Projects, one of Hyderabad's leading developers. The website showcases residential and commercial ventures with a focus on transparency and quality, featuring virtual home tours and a user-centric property catalog.",
+    href: "https://greaterinfraprojects.in/",
+    image: "dynamic",
+    bgImage: "/assets/backgrounds/blanket.jpg",
+    frameworks: [
+      { id: 1, name: "React" },
+      { id: 2, name: "Tailwind CSS" },
+      { id: 3, name: "Framer Motion" },
+      { id: 4, name: "GSAP" },
+    ],
+  },
+  {
+    id: 10,
+    name: "Karostartup Ecosystem",
+    description:
+      "A comprehensive digital hub for the Indian startup ecosystem. Karostartup connects founders with freelancers, provides the latest funding news, and offers a wealth of resources and growth strategies for entrepreneurs seeking to scale their ventures.",
+    href: "https://www.karostartup.in/",
+    image: "dynamic",
+    bgImage: "/assets/backgrounds/curtains.jpg",
+    frameworks: [
+      { id: 1, name: "React" },
+      { id: 2, name: "Node.js" },
+      { id: 3, name: "Supabase" },
+      { id: 4, name: "Tailwind CSS" },
+    ],
+  },
+  {
+    id: 11,
+    name: "HireSense AI Platform",
+    description:
+      "An innovative AI-enabled Talent Intelligence Platform. HireSense AI leverages machine learning for skill matching, predictive analytics for workforce planning, and talent market intelligence to provide enterprises with a competitive edge in hiring.",
+    href: "https://hiresenseaii.vercel.app/",
+    image: "dynamic",
+    bgImage: "/assets/backgrounds/map.jpg",
+    frameworks: [
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "Vercel" },
+      { id: 3, name: "AI/ML" },
+      { id: 4, name: "Tailwind CSS" },
+      { id: 5, name: "Framer Motion" },
+    ],
+  },
 ];
+
 
 export const socials = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/1akshay/" },
